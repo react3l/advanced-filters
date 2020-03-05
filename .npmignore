@@ -1,0 +1,11 @@
+node_modules/
+.idea/
+src/
+yarn-error.log
+yarn.lock
+.gitignore
+.travis.yml
+rollup.config.js
+tslint.json
+.editorconfig
+example/
