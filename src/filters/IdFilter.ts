@@ -1,5 +1,5 @@
 import {translate} from 'helpers/internationalization';
-import {FilterType} from 'react3l';
+import {FilterType} from 'interfaces/react3l-core-interfaces';
 import nameof from 'ts-nameof.macro';
 import {Filter} from './Filter';
 

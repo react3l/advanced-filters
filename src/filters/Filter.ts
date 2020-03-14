@@ -1,4 +1,4 @@
-import {FilterType} from 'react3l';
+import {FilterType} from 'interfaces/react3l-core-interfaces';
 
 export class Filter {
   public static types(): Array<FilterType<Filter>> {

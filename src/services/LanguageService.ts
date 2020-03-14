@@ -1,24 +1,22 @@
-import axios, {AxiosResponse} from 'axios';
-import {GlobalState} from 'config';
-import i18next from 'i18next';
-import path from 'path';
+import {GlobalState, i18nextConfig} from 'config';
+import i18next from 'config/internationalization';
+import {initReactI18next} from 'react-i18next';
 import React from 'reactn';
 
 export class LanguageService {
-  public useLanguage() {
+  public async initLanguageService() {
+    await i18next.use(initReactI18next)
+      .init(i18nextConfig);
+  }
+
+  public useLanguage(): void {
     const [language] = React.useGlobal<GlobalState, 'language'>('language');
-    const [, setLoading] = React.useGlobal<GlobalState, 'loading'>('loading');
 
     const handleChangeLanguage = React.useCallback(
       async () => {
-        await setLoading(true);
-        await axios.get(path.join('/i18n', `${language}.json`))
-          .then(async (response: AxiosResponse<any>) => {
-            await i18next.addResource(language, '', '', response.data);
-            await i18next.changeLanguage(language);
-          });
+        await i18next.changeLanguage(language);
       },
-      [language, setLoading],
+      [language],
     );
 
     React.useEffect(
@@ -27,6 +25,17 @@ export class LanguageService {
       },
       [handleChangeLanguage],
     );
+  }
+
+  public async addLanguage(key: string, resource: any) {
+    await i18next.addResource(key, '', '', resource);
+    const globalState: GlobalState = React.getGlobal<GlobalState>();
+    await React.setGlobal<GlobalState>({
+      languageResources: {
+        ...globalState.languageResources,
+        [key]: resource,
+      },
+    });
   }
 }
 

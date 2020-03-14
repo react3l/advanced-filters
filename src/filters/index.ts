@@ -1,11 +1,11 @@
-export {Filter} from './Filter';
+export {DateFilter} from './DateFilter';
 
-export {IdFilter} from './IdFilter';
+export {Filter} from './Filter';
 
 export {GuidFilter} from './GuidFilter';
 
-export {StringFilter} from './StringFilter';
+export {IdFilter} from './IdFilter';
 
 export {NumberFilter} from './NumberFilter';
 
-export {DateFilter} from './DateFilter';
+export {StringFilter} from './StringFilter';

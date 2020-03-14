@@ -1,6 +1,6 @@
 {
   "name": "react3l-core",
-  "version": "0.1.0-beta",
+  "version": "0.2.3",
   "description": "React3L Core",
   "author": "thanhtunguet",
   "license": "MIT",
@@ -9,17 +9,14 @@
   "module": "./index.js",
   "jsnext:main": "dist/index.js",
   "engines": {
-    "node": ">=8",
-    "npm": ">=5"
+    "node": ">=10"
   },
   "scripts": {
     "test": "cross-env CI=1 react-scripts-ts test --env=jsdom",
     "test:watch": "react-scripts-ts test --env=jsdom",
+    "prebuild": "rm -rf dist/",
     "build": "rollup -c",
-    "postbuild": "cp package.json dist/package.json",
-    "start": "rollup -c -w",
-    "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build"
+    "postbuild": "cp -r package.json src/interfaces/ dist/"
   },
   "dependencies": {
     "antd": "^4.0.1",
@@ -35,7 +32,8 @@
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0"
+    "react-dom": "^15.0.0 || ^16.0.0",
+    "react-native": "^0.61.5"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",
@@ -44,8 +42,10 @@
     "@rollup/plugin-typescript": "^3.0.0",
     "@rollup/plugin-url": "^4.0.2",
     "@types/jest": "^23.1.5",
+    "@types/lodash": "^4.14.149",
     "@types/react": "^16.3.13",
     "@types/react-dom": "^16.0.5",
+    "@types/react-native": "^0.61.20",
     "@types/react-router": "^5.1.4",
     "@types/react-router-config": "^5.0.1",
     "@types/react-router-dom": "^5.1.3",
@@ -54,9 +54,9 @@
     "babel-plugin-macros": "^2.8.0",
     "babel-runtime": "^6.26.0",
     "cross-env": "^5.1.4",
-    "gh-pages": "^1.2.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-i18next": "^11.3.3",
     "react-scripts": "^3.4.0",
     "react-scripts-ts": "^2.16.0",
     "rollup": "^1.32.0",

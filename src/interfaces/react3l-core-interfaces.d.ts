@@ -2,7 +2,7 @@ import {ModelFilter} from 'models';
 import {Model} from 'models/Model';
 import {Moment} from 'moment';
 
-declare module 'react3l' {
+declare module 'interfaces/react3l-core-interfaces' {
   export type Id = string | number;
 
   export interface JSONObject {
@@ -59,4 +59,6 @@ declare module 'react3l' {
   }
 
   export type FilterHandlerType<TModelFilter extends ModelFilter> = (list: any[], search?: TModelFilter) => any[];
+
+  export type Transformer = (v: any) => any;
 }

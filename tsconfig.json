@@ -25,7 +25,8 @@
     "skipLibCheck": true,
     "strict": false,
     "typeRoots": [
-      "node_modules/@types/"
+      "node_modules/@types/",
+      "src/interfaces/"
     ],
     "target": "es5"
   },
@@ -36,6 +37,7 @@
     "src/**/*.stories.tsx",
     "src/**/*.test.ts",
     "src/**/*.test.tsx",
+    "src/interfaces/",
     "node_modules",
     "rollup.config.js"
   ]

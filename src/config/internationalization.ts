@@ -1,4 +1,4 @@
-import {InitOptions} from 'i18next';
+import i18next, {InitOptions} from 'i18next';
 import {initialGlobalState} from './global';
 
 export const i18nextConfig: InitOptions = {
@@ -16,3 +16,5 @@ export const i18nextConfig: InitOptions = {
     suffix: '}}',
   },
 };
+
+export default i18next;

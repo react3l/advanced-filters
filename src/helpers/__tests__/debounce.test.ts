@@ -14,6 +14,7 @@ describe('debounce helper', () => {
     }
 
     expect(x).toEqual(1);
+
     setTimeout(() => {
       expect(x).toEqual(2);
     }, INPUT_DEBOUNCE_TIME);

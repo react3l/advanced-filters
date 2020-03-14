@@ -1,12 +1,18 @@
 /* tslint:disable:variable-name */
-import {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
+import {AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
 import {createHttpService} from 'helpers/http';
+
+export type AxiosRequestInterceptor = (request: AxiosRequestConfig) => (AxiosRequestConfig | Promise<AxiosRequestConfig>);
+export type AxiosResponseInterceptor = <T = any>(response: AxiosResponse<T>) => (AxiosResponse<T> | Promise<AxiosResponse<T>>);
+export type AxiosErrorInterceptor = <T = any>(error: AxiosError<T>) => any;
 
 export class Repository {
 
-  private static _defaultRequestInterceptor: (v: AxiosRequestConfig) => AxiosRequestConfig | Promise<AxiosRequestConfig>;
+  private static _defaultRequestInterceptor: AxiosRequestInterceptor;
 
-  private static _defaultResponseInterceptor: (v: AxiosResponse<any>) => AxiosResponse<any> | Promise<AxiosResponse<any>>;
+  private static _defaultResponseInterceptor: AxiosResponseInterceptor;
+
+  private static _defaultErrorInterceptor: AxiosErrorInterceptor;
 
   protected http: AxiosInstance;
 
@@ -22,6 +28,9 @@ export class Repository {
     if (typeof Repository._defaultResponseInterceptor === 'function') {
       this.http.interceptors.response.use(Repository._defaultResponseInterceptor);
     }
+    if (typeof Repository._defaultErrorInterceptor === 'function') {
+      this.http.interceptors.response.use(undefined, Repository._defaultErrorInterceptor);
+    }
   }
 
   public setBaseURL(baseURL: string) {
@@ -32,11 +41,15 @@ export class Repository {
     return this.http;
   }
 
-  static set defaultRequestInterceptor(value: (v: AxiosRequestConfig) => (AxiosRequestConfig | Promise<AxiosRequestConfig>)) {
-    this._defaultRequestInterceptor = value;
+  static set defaultRequestInterceptor(requestInterceptor: AxiosRequestInterceptor) {
+    this._defaultRequestInterceptor = requestInterceptor;
   }
 
-  static set defaultResponseInterceptor(value: (v: AxiosResponse<any>) => (AxiosResponse<any> | Promise<AxiosResponse<any>>)) {
-    this._defaultResponseInterceptor = value;
+  static set defaultResponseInterceptor(responseInterceptor: AxiosResponseInterceptor) {
+    this._defaultResponseInterceptor = responseInterceptor;
+  }
+
+  static set defaultErrorInterceptor(errorInterceptor: AxiosErrorInterceptor) {
+    this._defaultErrorInterceptor = errorInterceptor;
   }
 }

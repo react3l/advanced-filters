@@ -1,5 +1,5 @@
 import {Model} from 'models';
-import {ErrorMap} from 'react3l';
+import {ErrorMap} from 'interfaces/react3l-core-interfaces';
 
 export class FormService {
   public getValidationStatus<T extends Model>(errors: ErrorMap<T>, field: string) {

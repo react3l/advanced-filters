@@ -1,4 +1,4 @@
-import {ErrorMap} from 'react3l';
+import {ErrorMap} from 'interfaces/react3l-core-interfaces';
 import {Cloneable} from './Cloneable';
 
 export class Model extends Cloneable {

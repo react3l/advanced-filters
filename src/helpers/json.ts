@@ -1,4 +1,4 @@
-import {JSONObject} from 'react3l';
+import {JSONObject} from 'interfaces/react3l-core-interfaces';
 
 export function sort(json: JSONObject) {
   const result: JSONObject = {};

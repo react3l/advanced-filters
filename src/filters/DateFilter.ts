@@ -1,7 +1,7 @@
 import {Filter} from 'filters/Filter';
 import {translate} from 'helpers/internationalization';
 import {Moment} from 'moment';
-import {FilterType} from 'react3l';
+import {FilterType} from 'interfaces/react3l-core-interfaces';
 import nameof from 'ts-nameof.macro';
 
 export class DateFilter extends Filter {

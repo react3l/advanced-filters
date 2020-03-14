@@ -8,7 +8,7 @@ import multiInput from "rollup-plugin-multi-input";
 import fs from "fs";
 import pkg from "./package.json";
 
-const files = [];
+const inputFiles = [];
 
 function findTSFiles(root) {
   if (fs.existsSync(root)) {
@@ -21,7 +21,7 @@ function findTSFiles(root) {
     } else {
       if (root.match(/\.tsx?$/)) {
         if (!root.match(/\.(d|test|spec)\.ts/)) {
-          files.push(root);
+          inputFiles.push(root);
         }
       }
     }
@@ -33,7 +33,7 @@ findTSFiles("src");
 const dependencies = Object.keys(pkg.dependencies);
 
 export default {
-  input: files,
+  input: inputFiles,
   output: {
     exports: "named",
     sourcemap: true,
@@ -62,5 +62,7 @@ export default {
       },
     }),
   ],
-  external: id => dependencies.includes(id),
+  external: (id) => {
+    return dependencies.includes(id);
+  },
 };

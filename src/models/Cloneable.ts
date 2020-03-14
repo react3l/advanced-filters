@@ -1,4 +1,4 @@
-import {PureModelData} from 'react3l';
+import {PureModelData} from 'interfaces/react3l-core-interfaces';
 
 export class Cloneable {
   public static clone<T extends Cloneable>(cloneable?: PureModelData<T>): T {

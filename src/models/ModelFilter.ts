@@ -1,4 +1,4 @@
-import {PureModelData} from 'react3l';
+import {PureModelData} from 'interfaces/react3l-core-interfaces';
 import {DEFAULT_TAKE} from '../config';
 import {Cloneable} from './Cloneable';
 
