@@ -1,5 +1,5 @@
-import {GlobalState, i18nextConfig} from 'config';
-import i18next from 'config/internationalization';
+import {GlobalState} from 'config/global';
+import i18next, {i18nextConfig} from 'config/internationalization';
 import {initReactI18next} from 'react-i18next';
 import React from 'reactn';
 

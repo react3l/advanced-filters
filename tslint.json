@@ -3,24 +3,24 @@
     "tslint:recommended"
   ],
   "rules": {
-    "quotemark": [
-      true,
-      "single",
-      "jsx-double"
-    ],
-    "trailing-comma": [
-      true,
-      {
-        "multiline": "always",
-        "singleline": "never",
-        "esSpecCompliant": true
-      }
-    ],
-    "indent": [
-      true,
-      "spaces",
-      2
-    ],
+      "quotemark": [
+        true,
+        "single",
+        "jsx-double"
+      ],
+      "trailing-comma": [
+        true,
+        {
+          "multiline": "always",
+          "singleline": "never",
+          "esSpecCompliant": true
+        }
+      ],
+      "indent": [
+        true,
+        "spaces",
+        2
+      ],
     "eofline": true,
     "object-literal-sort-keys": false,
     "semicolon": [

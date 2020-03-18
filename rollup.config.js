@@ -8,15 +8,13 @@ import multiInput from "rollup-plugin-multi-input";
 import fs from "fs";
 import pkg from "./package.json";
 
-const inputFiles = [];
-
-function findTSFiles(root) {
+function findTSFiles(root, inputFiles) {
   if (fs.existsSync(root)) {
     if (fs.lstatSync(root).isDirectory()) {
       fs.readdirSync(root)
         .forEach((filename) => {
           const p = `${root}/${filename}`;
-          findTSFiles(p);
+          findTSFiles(p, inputFiles);
         });
     } else {
       if (root.match(/\.tsx?$/)) {
@@ -28,8 +26,8 @@ function findTSFiles(root) {
   }
 }
 
-findTSFiles("src");
-
+const inputFiles = [];
+findTSFiles("src", inputFiles);
 const dependencies = Object.keys(pkg.dependencies);
 
 export default {

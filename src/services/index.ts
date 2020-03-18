@@ -1,3 +1,3 @@
-export * from './FormService';
+export {formService} from './FormService';
 
-export * from './LanguageService';
+export {languageService} from './LanguageService';

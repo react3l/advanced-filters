@@ -1,6 +1,6 @@
 /* tslint:disable:variable-name */
-import {AsyncStorage} from 'react-native';
 import {Transformer} from 'interfaces/react3l-core-interfaces';
+import {AsyncStorage} from 'react-native';
 import {Repository} from './Repository';
 
 export class AsyncStorageRepository extends Repository {
