@@ -1,10 +1,9 @@
-import {translate} from 'helpers/internationalization';
-import {FilterType} from 'interfaces/react3l-core-interfaces';
+import { translate } from 'helpers/internationalization';
 import nameof from 'ts-nameof.macro';
-import {Filter} from './Filter';
+import { Filter, FilterType } from 'filters/Filter';
 
 export class GuidFilter extends Filter {
-  public static types(filter?: GuidFilter): Array<FilterType<GuidFilter>> {
+  public static types(filter?: GuidFilter): FilterType<GuidFilter>[] {
     return [
       {
         key: nameof(filter.equal),

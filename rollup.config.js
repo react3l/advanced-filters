@@ -1,25 +1,27 @@
-import typescript from "rollup-plugin-typescript2";
+import fs from "fs";
+import babel from "rollup-plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import external from "rollup-plugin-peer-deps-external";
 import resolve from "@rollup/plugin-node-resolve";
+import typescript from "rollup-plugin-typescript2";
 import url from "@rollup/plugin-url";
 import json from "@rollup/plugin-json";
 import multiInput from "rollup-plugin-multi-input";
-import fs from "fs";
 import pkg from "./package.json";
+import {DEFAULT_EXTENSIONS} from "@babel/core";
 
-function findTSFiles(root, inputFiles) {
+function findTSFiles(root, files) {
   if (fs.existsSync(root)) {
     if (fs.lstatSync(root).isDirectory()) {
       fs.readdirSync(root)
         .forEach((filename) => {
           const p = `${root}/${filename}`;
-          findTSFiles(p, inputFiles);
+          findTSFiles(p, files);
         });
     } else {
       if (root.match(/\.tsx?$/)) {
         if (!root.match(/\.(d|test|spec)\.ts/)) {
-          inputFiles.push(root);
+          files.push(root);
         }
       }
     }
@@ -31,6 +33,9 @@ findTSFiles("src", inputFiles);
 const dependencies = Object.keys(pkg.dependencies);
 
 export default {
+  external: (id) => {
+    return dependencies.includes(id);
+  },
   input: inputFiles,
   output: {
     exports: "named",
@@ -41,16 +46,14 @@ export default {
   plugins: [
     external(),
     url(),
-    resolve(),
-    typescript({
-      rollupCommonJSResolveHack: true,
-      clean: true,
-    }),
     commonjs({
       include: "node_modules/**",
       namedExports: {
         "node_modules/react-is/index.js": ["isValidElementType"],
       },
+    }),
+    resolve({
+      preferBuiltins: true,
     }),
     json(),
     multiInput({
@@ -59,8 +62,27 @@ export default {
         return `${output}`;
       },
     }),
+    typescript({
+      rollupCommonJSResolveHack: true,
+      clean: true,
+    }),
+    babel({
+      extensions: [
+        ...DEFAULT_EXTENSIONS,
+        ".ts",
+        ".tsx",
+      ],
+      presets: [
+        "@babel/preset-env",
+        "@babel/preset-react",
+        "@babel/preset-typescript",
+      ],
+      plugins: [
+        "macros",
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-proposal-class-properties",
+      ],
+      runtimeHelpers: true,
+    }),
   ],
-  external: (id) => {
-    return dependencies.includes(id);
-  },
 };

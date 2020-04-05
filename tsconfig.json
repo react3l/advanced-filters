@@ -26,9 +26,9 @@
     "strict": false,
     "typeRoots": [
       "node_modules/@types/",
-      "src/interfaces/"
+      "react3l-core.d.ts"
     ],
-    "target": "es5"
+    "target": "esnext"
   },
   "include": [
     "src/**/*"

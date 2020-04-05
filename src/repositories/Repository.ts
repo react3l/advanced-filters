@@ -1,55 +1,32 @@
-/* tslint:disable:variable-name */
-import {AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
-import {createHttpService} from 'helpers/http';
-
-export type AxiosRequestInterceptor = (request: AxiosRequestConfig) => (AxiosRequestConfig | Promise<AxiosRequestConfig>);
-export type AxiosResponseInterceptor = <T = any>(response: AxiosResponse<T>) => (AxiosResponse<T> | Promise<AxiosResponse<T>>);
-export type AxiosErrorInterceptor = <T = any>(error: AxiosError<T>) => any;
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { Axios } from 'axios-observable';
 
 export class Repository {
+  private http: AxiosInstance;
 
-  private static _defaultRequestInterceptor: AxiosRequestInterceptor;
+  private httpObservable: Axios;
 
-  private static _defaultResponseInterceptor: AxiosResponseInterceptor;
+  public static requestInterceptor: (config: AxiosRequestConfig) => AxiosRequestConfig | Promise<AxiosRequestConfig>;
 
-  private static _defaultErrorInterceptor: AxiosErrorInterceptor;
+  public static responseInterceptor: (response: AxiosResponse) => AxiosResponse | Promise<AxiosResponse>;
 
-  protected http: AxiosInstance;
+  public constructor(httpConfig: AxiosRequestConfig) {
+    this.http = axios.create(httpConfig);
+    this.httpObservable = Axios.create(httpConfig);
 
-  constructor(
-    config?: AxiosRequestConfig,
-    requestInterceptor?: (config: AxiosRequestConfig) => AxiosRequestConfig,
-    responseInterceptor?: <T>(response: AxiosResponse<T>) => AxiosResponse<T>,
-  ) {
-    this.http = createHttpService(config, requestInterceptor, responseInterceptor);
-    if (typeof Repository._defaultRequestInterceptor === 'function') {
-      this.http.interceptors.request.use(Repository._defaultRequestInterceptor);
+    if (typeof Repository.requestInterceptor === 'function') {
+      this.http.interceptors.request.use(Repository.requestInterceptor);
+      this.httpObservable.interceptors.request.use(Repository.requestInterceptor);
     }
-    if (typeof Repository._defaultResponseInterceptor === 'function') {
-      this.http.interceptors.response.use(Repository._defaultResponseInterceptor);
-    }
-    if (typeof Repository._defaultErrorInterceptor === 'function') {
-      this.http.interceptors.response.use(undefined, Repository._defaultErrorInterceptor);
+
+    if (typeof Repository.responseInterceptor === 'function') {
+      this.http.interceptors.response.use(Repository.responseInterceptor);
+      this.httpObservable.interceptors.response.use(Repository.responseInterceptor);
     }
   }
 
   public setBaseURL(baseURL: string) {
     this.http.defaults.baseURL = baseURL;
-  }
-
-  public getHttpInstance(): AxiosInstance {
-    return this.http;
-  }
-
-  static set defaultRequestInterceptor(requestInterceptor: AxiosRequestInterceptor) {
-    this._defaultRequestInterceptor = requestInterceptor;
-  }
-
-  static set defaultResponseInterceptor(responseInterceptor: AxiosResponseInterceptor) {
-    this._defaultResponseInterceptor = responseInterceptor;
-  }
-
-  static set defaultErrorInterceptor(errorInterceptor: AxiosErrorInterceptor) {
-    this._defaultErrorInterceptor = errorInterceptor;
+    this.httpObservable.defaults.baseURL = baseURL;
   }
 }

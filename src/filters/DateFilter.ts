@@ -1,11 +1,10 @@
-import {Filter} from 'filters/Filter';
+import {Filter, FilterType} from 'filters/Filter';
 import {translate} from 'helpers/internationalization';
-import {FilterType} from 'interfaces/react3l-core-interfaces';
 import {Moment} from 'moment';
 import nameof from 'ts-nameof.macro';
 
 export class DateFilter extends Filter {
-  public static types(filter?: DateFilter): Array<FilterType<DateFilter>> {
+  public static types(filter?: DateFilter): FilterType<DateFilter>[] {
     return [
       {
         key: nameof(filter.equal),

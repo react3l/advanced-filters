@@ -1,7 +1,10 @@
-import {FilterType} from 'interfaces/react3l-core-interfaces';
+export type FilterType<T extends Filter> = {
+  key: keyof T | string;
+  label: string;
+};
 
 export class Filter {
-  public static types(): Array<FilterType<Filter>> {
+  public static types(): FilterType<Filter>[] {
     return [];
   }
 

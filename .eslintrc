@@ -6,7 +6,8 @@
   ],
   "extends": [
     "eslint:recommended",
-    "react-app"
+    "react-app",
+    "standard"
   ],
   "rules": {
     "react-hooks/rules-of-hooks": "error",

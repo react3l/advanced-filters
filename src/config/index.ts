@@ -1,5 +1,5 @@
-export * from './consts';
+export * from 'config/consts';
 
-export * from './global';
+export * from 'config/global';
 
-export * from './internationalization';
+export * from 'config/internationalization';

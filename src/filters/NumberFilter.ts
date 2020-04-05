@@ -1,10 +1,9 @@
-import {translate} from 'helpers/internationalization';
-import {FilterType} from 'interfaces/react3l-core-interfaces';
+import { Filter, FilterType } from 'filters/Filter';
+import { translate } from 'helpers/internationalization';
 import nameof from 'ts-nameof.macro';
-import {Filter} from './Filter';
 
 export class NumberFilter extends Filter {
-  public static types(filter?: NumberFilter): Array<FilterType<NumberFilter>> {
+  public static types(filter?: NumberFilter): FilterType<NumberFilter>[] {
     return [
       {
         key: nameof(filter.equal),
