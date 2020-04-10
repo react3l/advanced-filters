@@ -2,9 +2,9 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Axios } from 'axios-observable';
 
 export class Repository {
-  private http: AxiosInstance;
+  protected http: AxiosInstance;
 
-  private httpObservable: Axios;
+  protected httpObservable: Axios;
 
   public static requestInterceptor: (config: AxiosRequestConfig) => AxiosRequestConfig | Promise<AxiosRequestConfig>;
 

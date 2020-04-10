@@ -2,6 +2,14 @@ import { DEFAULT_TAKE, INITIAL_SKIP } from 'config/consts';
 import { OrderType } from 'index';
 import nameof from 'ts-nameof.macro';
 
+function parseNumber(x: string, def?: number) {
+  const result: number = parseInt(x, 10);
+  if (Number.isNaN(result)) {
+    return def;
+  }
+  return result;
+}
+
 export class ModelFilter {
   public skip: number = 0;
 
@@ -21,11 +29,11 @@ export class ModelFilter {
         .forEach(([key, value]) => {
           switch (key) {
             case nameof(modelFilter.skip):
-              instance.skip = parseInt(value as string, 10) ?? INITIAL_SKIP;
+              instance.skip = parseNumber(modelFilter.skip as any, INITIAL_SKIP);
               break;
 
             case nameof(modelFilter.take):
-              instance.take = parseInt(value as string, 10) ?? DEFAULT_TAKE;
+              instance.take = parseNumber(modelFilter.take as any, DEFAULT_TAKE);
               break;
 
             case nameof(modelFilter.orderBy):
