@@ -2,7 +2,7 @@ import { ErrorMap } from 'index';
 import nameof from 'ts-nameof.macro';
 
 export class Model {
-  errors: ErrorMap<Model>;
+  errors?: ErrorMap<Model>;
 
   key?: string | number;
 
