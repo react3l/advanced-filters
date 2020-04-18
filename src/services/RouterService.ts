@@ -1,4 +1,4 @@
-import { flatten, unflatten } from 'helpers/json';
+import { jsonHelper } from 'helpers/json';
 import { ModelFilter } from 'models/ModelFilter';
 import queryString from 'querystring';
 import React, { Dispatch, SetStateAction } from 'react';
@@ -29,7 +29,7 @@ export class RouterService {
 
     const modelFilter: T = React.useMemo(
       () => {
-        const parseParams = unflatten(queryString.parse(search) as any);
+        const parseParams = jsonHelper.unflatten(queryString.parse(search) as any);
         return ModelFilter.clone<T>(parseParams as T);
       },
       [],
@@ -39,7 +39,7 @@ export class RouterService {
       (modelFilter: T) => {
         history.replace({
           pathname,
-          search: queryString.stringify(flatten(modelFilter)),
+          search: queryString.stringify(jsonHelper.flatten(modelFilter)),
         });
       },
       [history],

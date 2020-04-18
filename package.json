@@ -1,6 +1,6 @@
 {
   "name": "react3l-core",
-  "version": "2.2.1",
+  "version": "3.0.0",
   "description": "React3L Core",
   "main": "index.js",
   "module": "index.js",
@@ -66,6 +66,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-i18next": "^11.3.4",
+    "react-native": "^0.62.2",
     "react-router-config": "^5.1.1",
     "react-router-dom": "^5.1.2",
     "reactn": "^2.2.6",
