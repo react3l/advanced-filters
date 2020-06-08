@@ -1,5 +1,5 @@
 import camelCase from 'lodash/camelCase';
-import {transformAPIContent} from '../data';
+import { transformAPIContent } from '../data';
 
 describe('data helpers', () => {
   it('transformKey works', () => {

@@ -1,5 +1,5 @@
-import {AxiosInstance} from 'axios';
-import {createHttpService} from '../http';
+import { AxiosInstance } from 'axios';
+import { createHttpService } from '../http';
 
 describe('http helpers', () => {
   it('createHttpService works', () => {

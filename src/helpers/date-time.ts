@@ -1,5 +1,5 @@
-import moment, {Moment} from 'moment';
-import {STANDARD_DATE_FORMAT, STANDARD_DATE_TIME_FORMAT, STANDARD_TIME_FORMAT} from 'config/consts';
+import moment, { Moment } from 'moment';
+import { STANDARD_DATE_FORMAT, STANDARD_DATE_TIME_FORMAT, STANDARD_TIME_FORMAT } from 'config/consts';
 
 export function formatDate(date: Moment, dateFormat: string = STANDARD_DATE_FORMAT) {
   if (typeof date === 'object' && 'format' in date) {

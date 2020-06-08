@@ -1,4 +1,4 @@
-import {flatten, unflatten} from '../json';
+import { flatten, unflatten } from '../json';
 
 describe('json helpers', () => {
   it('flatten works', () => {

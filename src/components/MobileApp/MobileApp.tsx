@@ -1,6 +1,9 @@
 import React, { ReactElement } from 'react';
 import { AppLoading } from 'expo';
 
+/**
+ * @deprecated This component was deprecated and will be removed in next major release
+ */
 export interface MobileAppProps {
   children?: ReactElement | ReactElement[];
   loadAsync?(): Promise<any>;
@@ -8,6 +11,11 @@ export interface MobileAppProps {
   onError?(error: Error): any;
 }
 
+/**
+ * @deprecated This component was deprecated and will be removed in next major release
+ * @param props
+ * @constructor
+ */
 function MobileApp(props: MobileAppProps) {
   const [loading, setLoading] = React.useState<boolean>(true);
 
@@ -25,7 +33,7 @@ function MobileApp(props: MobileAppProps) {
       }
       setLoading(false);
     },
-    [],
+    [loadAsync],
   );
 
   if (loading) {

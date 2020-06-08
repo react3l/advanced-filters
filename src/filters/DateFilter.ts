@@ -1,6 +1,6 @@
-import {Filter, FilterType} from 'filters/Filter';
-import {translate} from 'helpers/internationalization';
-import {Moment} from 'moment';
+import { Filter, FilterType } from 'filters/Filter';
+import { translate } from 'helpers/internationalization';
+import { Moment } from 'moment';
 import nameof from 'ts-nameof.macro';
 
 export class DateFilter extends Filter {

@@ -4,14 +4,14 @@ import { MemoryRouter } from 'react-router-dom';
 import MobileApp from './MobileApp';
 
 describe('MobileApp', () => {
-    it('renders without crashing', () => {
-        const div = document.createElement('div');
-        ReactDOM.render(
-            <MemoryRouter>
-                <MobileApp />
-            </MemoryRouter>,
-            div,
-        );
-        ReactDOM.unmountComponentAtNode(div);
-    });
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(
+      <MemoryRouter>
+        <MobileApp />
+      </MemoryRouter>,
+      div,
+    );
+    ReactDOM.unmountComponentAtNode(div);
+  });
 });

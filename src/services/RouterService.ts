@@ -7,7 +7,7 @@ import { useHistory, useParams } from 'react-router-dom';
 export class RouterService {
   public useGoBack(): [
     () => void
-  ] {
+    ] {
     const history = useHistory();
 
     return [
@@ -23,7 +23,7 @@ export class RouterService {
   public useRouterFilter<T extends ModelFilter>(): [
     T,
     Dispatch<SetStateAction<T>>,
-  ] {
+    ] {
     const { pathname, search } = useParams();
     const history = useHistory();
 
@@ -32,7 +32,7 @@ export class RouterService {
         const parseParams = jsonHelper.unflatten(queryString.parse(search) as any);
         return ModelFilter.clone<T>(parseParams as T);
       },
-      [],
+      [search],
     );
 
     const setModelFilter: Dispatch<SetStateAction<T>> = React.useCallback(
@@ -42,7 +42,7 @@ export class RouterService {
           search: queryString.stringify(jsonHelper.flatten(modelFilter)),
         });
       },
-      [history],
+      [history, pathname],
     );
 
     return [

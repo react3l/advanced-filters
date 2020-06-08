@@ -1,4 +1,4 @@
-import {IMAGE_JPEG} from 'config/file-consts';
+import { IMAGE_JPEG } from 'config/file-consts';
 
 export function base64ToDataURL(base64: string, mimeType = IMAGE_JPEG) {
   return `data:${mimeType};base64,${base64}`;

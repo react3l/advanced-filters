@@ -1,5 +1,5 @@
-import {INPUT_DEBOUNCE_TIME} from '../../config';
-import {debounce} from '../debounce';
+import { INPUT_DEBOUNCE_TIME } from '../../config';
+import { debounce } from '../debounce';
 
 describe('debounce helper', () => {
   it('debounce works', () => {

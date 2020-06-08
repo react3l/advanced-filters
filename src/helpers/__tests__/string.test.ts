@@ -1,4 +1,4 @@
-import {url} from '../string';
+import { url } from '../string';
 
 describe('string helpers', () => {
   it('url works', () => {
