@@ -1,38 +1,38 @@
-import { Filter, FilterType } from 'filters/Filter';
-import { translate } from 'helpers/internationalization';
-import { Moment } from 'moment';
+import {Filter, FilterType} from 'Filter';
 import nameof from 'ts-nameof.macro';
+import {translate} from 'helpers/internationalization';
+import {Moment} from 'moment';
 
 export class DateFilter extends Filter {
   public static types(filter?: DateFilter): FilterType<DateFilter>[] {
     return [
       {
         key: nameof(filter.equal),
-        label: translate('filters.dateFilter.equal'),
+        label: translate('filters.equal'),
       },
       {
         key: nameof(filter.notEqual),
-        label: translate('filters.dateFilter.notEqual'),
+        label: translate('filters.notEqual'),
       },
       {
         key: nameof(filter.greater),
-        label: translate('filters.dateFilter.greater'),
+        label: translate('filters.greater'),
       },
       {
         key: nameof(filter.greaterEqual),
-        label: translate('filters.dateFilter.greaterEqual'),
+        label: translate('filters.greaterEqual'),
       },
       {
         key: nameof(filter.less),
-        label: translate('filters.dateFilter.less'),
+        label: translate('filters.less'),
       },
       {
         key: nameof(filter.lessEqual),
-        label: translate('filters.dateFilter.lessEqual'),
+        label: translate('filters.lessEqual'),
       },
       {
         key: nameof(filter.range),
-        label: translate('filters.dateFilter.range'),
+        label: translate('filters.range'),
       },
     ];
   }

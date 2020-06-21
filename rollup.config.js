@@ -1,16 +1,16 @@
-import fs from "fs";
-import babel from "rollup-plugin-babel";
-import commonjs from "@rollup/plugin-commonjs";
-import external from "rollup-plugin-peer-deps-external";
-import resolve from "@rollup/plugin-node-resolve";
-import typescript from "rollup-plugin-typescript2";
-import url from "@rollup/plugin-url";
-import json from "@rollup/plugin-json";
-import multiInput from "rollup-plugin-multi-input";
-import pkg from "./package.json";
-import {DEFAULT_EXTENSIONS} from "@babel/core";
+import fs from 'fs';
+import babel from 'rollup-plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
+import external from 'rollup-plugin-peer-deps-external';
+import resolve from '@rollup/plugin-node-resolve';
+import typescript from 'rollup-plugin-typescript2';
+import url from '@rollup/plugin-url';
+import json from '@rollup/plugin-json';
+import multiInput from 'rollup-plugin-multi-input';
+import pkg from './package.json';
+import { DEFAULT_EXTENSIONS } from '@babel/core';
 
-function findTSFiles(root, files) {
+function findTSFiles (root, files) {
   if (fs.existsSync(root)) {
     if (fs.lstatSync(root).isDirectory()) {
       fs.readdirSync(root)
@@ -29,7 +29,7 @@ function findTSFiles(root, files) {
 }
 
 const inputFiles = [];
-findTSFiles("src", inputFiles);
+findTSFiles('src', inputFiles);
 const dependencies = Object.keys(pkg.dependencies);
 
 export default {
@@ -38,18 +38,18 @@ export default {
   },
   input: inputFiles,
   output: {
-    exports: "named",
+    exports: 'named',
     sourcemap: true,
-    format: "esm",
-    dir: "dist",
+    format: 'esm',
+    dir: 'dist',
   },
   plugins: [
     external(),
     url(),
     commonjs({
-      include: "node_modules/**",
+      include: 'node_modules/**',
       namedExports: {
-        "node_modules/react-is/index.js": ["isValidElementType"],
+        'node_modules/react-is/index.js': ['isValidElementType'],
       },
     }),
     resolve({
@@ -57,7 +57,7 @@ export default {
     }),
     json(),
     multiInput({
-      relative: "src/",
+      relative: 'src/',
       transformOutputPath: (output) => {
         return `${output}`;
       },
@@ -69,18 +69,14 @@ export default {
     babel({
       extensions: [
         ...DEFAULT_EXTENSIONS,
-        ".ts",
-        ".tsx",
+        '.ts',
+        '.tsx',
       ],
       presets: [
-        "@babel/preset-env",
-        "@babel/preset-react",
-        "@babel/preset-typescript",
+        '@babel/preset-typescript',
       ],
       plugins: [
-        "macros",
-        "@babel/plugin-transform-runtime",
-        "@babel/plugin-proposal-class-properties",
+        'macros',
       ],
       runtimeHelpers: true,
     }),

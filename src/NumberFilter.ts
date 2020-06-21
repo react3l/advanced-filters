@@ -1,5 +1,5 @@
-import { Filter, FilterType } from 'filters/Filter';
-import { translate } from 'helpers/internationalization';
+import {Filter, FilterType} from 'Filter';
+import {translate} from 'helpers/internationalization';
 import nameof from 'ts-nameof.macro';
 
 export class NumberFilter extends Filter {
@@ -7,31 +7,31 @@ export class NumberFilter extends Filter {
     return [
       {
         key: nameof(filter.equal),
-        label: translate('filters.numberFilter.equal'),
+        label: translate('filters.equal'),
       },
       {
         key: nameof(filter.notEqual),
-        label: translate('filters.numberFilter.notEqual'),
+        label: translate('filters.notEqual'),
       },
       {
         key: nameof(filter.greater),
-        label: translate('filters.numberFilter.greater'),
+        label: translate('filters.greater'),
       },
       {
         key: nameof(filter.greaterEqual),
-        label: translate('filters.numberFilter.greaterEqual'),
+        label: translate('filters.greaterEqual'),
       },
       {
         key: nameof(filter.less),
-        label: translate('filters.numberFilter.less'),
+        label: translate('filters.less'),
       },
       {
         key: nameof(filter.lessEqual),
-        label: translate('filters.numberFilter.lessEqual'),
+        label: translate('filters.lessEqual'),
       },
       {
         key: nameof(filter.range),
-        label: translate('filters.numberFilter.range'),
+        label: translate('filters.range'),
       },
     ];
   }

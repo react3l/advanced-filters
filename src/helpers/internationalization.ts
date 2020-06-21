@@ -1,1 +1,3 @@
-export const translate: (key: string) => string = (key: string) => key;
+export function translate(key: string) {
+  return key;
+}

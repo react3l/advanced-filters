@@ -1,41 +1,41 @@
-import { Filter, FilterType } from 'filters/Filter';
-import { translate } from 'helpers/internationalization';
+import {Filter, FilterType} from 'Filter';
 import nameof from 'ts-nameof.macro';
+import {translate} from 'helpers/internationalization';
 
 export class StringFilter extends Filter {
   public static types(filter?: StringFilter): FilterType<StringFilter>[] {
     return [
       {
         key: nameof(filter.startWith),
-        label: translate('filters.stringFilter.startWith'),
+        label: translate('filters.startWith'),
       },
       {
         key: nameof(filter.notStartWith),
-        label: translate('filters.stringFilter.notStartWith'),
+        label: translate('filters.notStartWith'),
       },
       {
         key: nameof(filter.endWith),
-        label: translate('filters.stringFilter.endWith'),
+        label: translate('filters.endWith'),
       },
       {
         key: nameof(filter.notEndWith),
-        label: translate('filters.stringFilter.notEndWith'),
+        label: translate('filters.notEndWith'),
       },
       {
         key: nameof(filter.contain),
-        label: translate('filters.stringFilter.contain'),
+        label: translate('filters.contain'),
       },
       {
         key: nameof(filter.notContain),
-        label: translate('filters.stringFilter.notContain'),
+        label: translate('filters.notContain'),
       },
       {
         key: nameof(filter.equal),
-        label: translate('filters.stringFilter.equal'),
+        label: translate('filters.equal'),
       },
       {
         key: nameof(filter.notEqual),
-        label: translate('filters.stringFilter.notEqual'),
+        label: translate('filters.notEqual'),
       },
     ];
   }
