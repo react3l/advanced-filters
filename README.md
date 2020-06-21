@@ -114,4 +114,26 @@ export declare class StringFilter extends Filter {
 }
 ```
 
+## Translation file
+
+```json
+{
+  "filters.equal": "",
+  "filters.notEqual": "",
+  "filters.greater": "",
+  "filters.greaterEqual": "",
+  "filters.less": "",
+  "filters.lessEqual": "",
+  "filters.range": "",
+  "filters.in": "",
+  "filters.notIn": "",
+  "filters.startWith": "",
+  "filters.notStartWith": "",
+  "filters.endWith": "",
+  "filters.notEndWith": "",
+  "filters.contain": "",
+  "filters.notContain": ""
+}
+```
+
 &copy; 2020 thanhtunguet <ht@thanhtunguet.info>
