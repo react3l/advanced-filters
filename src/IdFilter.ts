@@ -1,5 +1,5 @@
-import {Filter, FilterType} from 'Filter';
-import { translate } from 'helpers/internationalization';
+import {Filter, FilterType} from './Filter';
+import { translate } from './helpers/internationalization';
 import nameof from 'ts-nameof.macro';
 
 export class IdFilter extends Filter {

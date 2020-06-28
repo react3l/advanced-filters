@@ -1,6 +1,6 @@
-import { translate } from 'helpers/internationalization';
+import { translate } from './helpers/internationalization';
 import nameof from 'ts-nameof.macro';
-import {Filter, FilterType} from 'Filter';
+import {Filter, FilterType} from './Filter';
 
 export class GuidFilter extends Filter {
   public static types(filter?: GuidFilter): FilterType<GuidFilter>[] {

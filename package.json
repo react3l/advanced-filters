@@ -1,6 +1,6 @@
 {
   "name": "react3l-advanced-filters",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "React3L Core",
   "main": "index.js",
   "module": "index.js",
@@ -38,7 +38,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "react3l": "^4.0.0-test"
+    "react3l": "^4.0.0-test-rc14"
   },
   "scripts": {
     "storybook": "start-storybook -p 9009",
@@ -46,7 +46,7 @@
     "watch": "rollup -c -w",
     "build": "rollup -c",
     "prebuild": "rm -rf dist/**",
-    "postbuild": "cp -r src/i18n/en/filters.json package.json dist/",
+    "postbuild": "cp -r src/i18n/en/filters.json package.json README.md dist/",
     "extract": "i18next-extractor -i src/ -o src/i18n/ -p src/i18n/ extract"
   }
 }
