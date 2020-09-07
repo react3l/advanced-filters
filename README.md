@@ -1,5 +1,13 @@
-react3l-advanced-filters
-------------------------
+@react3l/advanced-filters
+-------------------------
+
+# Installation
+
+- Add `.npmrc`:
+
+    ```npmrc
+    @react3l:registry=https://npm.pkg.github.com
+    ```
 
 ## IdFilter
 
@@ -7,8 +15,6 @@ For primary key in integer format
 
 ```typescript
 export declare class IdFilter extends Filter {
-    static types(filter?: IdFilter): FilterType<IdFilter>[];
-
     equal?: number;
 
     notEqual?: number;
@@ -25,8 +31,6 @@ For primary key in GUID format
 
 ```typescript
 export declare class GuidFilter extends Filter {
-    static types(filter?: GuidFilter): FilterType<GuidFilter>[];
-
     equal?: string;
 
     notEqual?: string;
@@ -45,8 +49,6 @@ For date/time fields
 import {Moment} from 'moment';
 
 export declare class DateFilter extends Filter {
-    static types(filter?: DateFilter): FilterType<DateFilter>[];
-
     equal?: Moment;
 
     notEqual?: Moment;
@@ -71,20 +73,18 @@ For number fields
 import { Filter, FilterType } from 'Filter';
 
 export declare class NumberFilter extends Filter {
-    static types(filter?: NumberFilter): FilterType<NumberFilter>[];
-   
     equal?: number;
-   
+
     notEqual?: number;
-   
+
     greater?: number;
-   
+
     greaterEqual?: number;
-   
+
     less?: number;
-   
+
     lessEqual?: number;
-   
+
     range?: [number | undefined, number | undefined];
 }
 ```
@@ -94,8 +94,6 @@ export declare class NumberFilter extends Filter {
 ```typescript
 import { Filter, FilterType } from 'Filter';
 export declare class StringFilter extends Filter {
-    static types(filter?: StringFilter): FilterType<StringFilter>[];
-    
     startWith?: string;
 
     notStartWith?: string;
@@ -111,28 +109,6 @@ export declare class StringFilter extends Filter {
     contain?: string;
 
     notContain?: string;
-}
-```
-
-## Translation file
-
-```json
-{
-  "filters.equal": "",
-  "filters.notEqual": "",
-  "filters.greater": "",
-  "filters.greaterEqual": "",
-  "filters.less": "",
-  "filters.lessEqual": "",
-  "filters.range": "",
-  "filters.in": "",
-  "filters.notIn": "",
-  "filters.startWith": "",
-  "filters.notStartWith": "",
-  "filters.endWith": "",
-  "filters.notEndWith": "",
-  "filters.contain": "",
-  "filters.notContain": ""
 }
 ```
 

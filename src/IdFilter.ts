@@ -1,29 +1,13 @@
-import {Filter, FilterType} from './Filter';
-import { translate } from './helpers/internationalization';
-import nameof from 'ts-nameof.macro';
+import { Filter } from './Filter';
 
+/**
+ * Advanced filter for ID key fields
+ *
+ * @package react3l-advanced-filters
+ * @see https://github.com/react3l/react3l-advanced-filters
+ * @author thanhtunguet <ht@thanhtunguet.info>
+ */
 export class IdFilter extends Filter {
-  public static types(filter?: IdFilter): FilterType<IdFilter>[] {
-    return [
-      {
-        key: nameof(filter.equal),
-        label: translate('filters.equal'),
-      },
-      {
-        key: nameof(filter.notEqual),
-        label: translate('filters.notEqual'),
-      },
-      {
-        key: nameof(filter.in),
-        label: translate('filters.in'),
-      },
-      {
-        key: nameof(filter.notIn),
-        label: translate('filters.notIn'),
-      },
-    ];
-  }
-
   public equal?: number;
 
   public notEqual?: number;

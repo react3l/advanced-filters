@@ -1,41 +1,13 @@
-import {Filter, FilterType} from './Filter';
-import {translate} from './helpers/internationalization';
-import nameof from 'ts-nameof.macro';
+import { Filter } from './Filter';
 
+/**
+ * Advanced filter for number fields
+ *
+ * @package react3l-advanced-filters
+ * @see https://github.com/react3l/react3l-advanced-filters
+ * @author thanhtunguet <ht@thanhtunguet.info>
+ */
 export class NumberFilter extends Filter {
-  public static types(filter?: NumberFilter): FilterType<NumberFilter>[] {
-    return [
-      {
-        key: nameof(filter.equal),
-        label: translate('filters.equal'),
-      },
-      {
-        key: nameof(filter.notEqual),
-        label: translate('filters.notEqual'),
-      },
-      {
-        key: nameof(filter.greater),
-        label: translate('filters.greater'),
-      },
-      {
-        key: nameof(filter.greaterEqual),
-        label: translate('filters.greaterEqual'),
-      },
-      {
-        key: nameof(filter.less),
-        label: translate('filters.less'),
-      },
-      {
-        key: nameof(filter.lessEqual),
-        label: translate('filters.lessEqual'),
-      },
-      {
-        key: nameof(filter.range),
-        label: translate('filters.range'),
-      },
-    ];
-  }
-
   public equal?: number;
 
   public notEqual?: number;
