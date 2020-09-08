@@ -15,4 +15,11 @@ export class GuidFilter extends Filter {
   public in?: string[];
 
   public notIn?: string[];
+
+  constructor(partial?: Partial<GuidFilter>) {
+    super();
+    if (partial) {
+      Object.assign<GuidFilter, Partial<GuidFilter>>(this, partial);
+    }
+  }
 }

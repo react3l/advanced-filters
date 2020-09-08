@@ -22,4 +22,11 @@ export class DateFilter extends Filter {
   public lessEqual?: Moment;
 
   public range?: [Moment | null, Moment | null];
+
+  constructor(partial?: Partial<DateFilter>) {
+    super();
+    if (partial) {
+      Object.assign<DateFilter, Partial<DateFilter>>(this, partial);
+    }
+  }
 }

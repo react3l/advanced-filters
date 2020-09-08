@@ -15,4 +15,11 @@ export class IdFilter extends Filter {
   public in?: number[];
 
   public notIn?: number[];
+
+  constructor(partial?: Partial<IdFilter>) {
+    super();
+    if (partial) {
+      Object.assign<IdFilter, Partial<IdFilter>>(this, partial);
+    }
+  }
 }

@@ -21,4 +21,11 @@ export class NumberFilter extends Filter {
   public lessEqual?: number;
 
   public range?: [number | undefined, number | undefined];
+
+  constructor(partial?: Partial<NumberFilter>) {
+    super();
+    if (partial) {
+      Object.assign<NumberFilter, Partial<NumberFilter>>(this, partial);
+    }
+  }
 }

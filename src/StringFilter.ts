@@ -23,4 +23,11 @@ export class StringFilter extends Filter {
   public contain?: string;
 
   public notContain?: string;
+
+  constructor(partial?: Partial<StringFilter>) {
+    super();
+    if (partial) {
+      Object.assign<StringFilter, Partial<StringFilter>>(this, partial);
+    }
+  }
 }
