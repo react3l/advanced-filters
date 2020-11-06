@@ -12,4 +12,7 @@ module.exports = {
   transform: {
     '^.+\\.(js|jsx|ts|tsx)?$': 'babel-jest',
   },
+  moduleNameMapper: {
+    "^@react3l\\/advanced\\-filters\\/(.*)$": "<rootDir>/src/$1",
+  },
 };
