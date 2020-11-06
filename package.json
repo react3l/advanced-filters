@@ -15,7 +15,8 @@
     "watch": "tsc -w",
     "build": "tsc",
     "prebuild": "rm -rf dist/**",
-    "postbuild": "cp -r package.json README.md dist/"
+    "postbuild": "cp -r package.json README.md dist/",
+    "test": "jest"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
