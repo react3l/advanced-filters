@@ -60,8 +60,6 @@ export declare class DateFilter extends Filter {
     less?: Moment;
 
     lessEqual?: Moment;
-
-    range?: [Moment | null, Moment | null];
 }
 ```
 
@@ -84,8 +82,6 @@ export declare class NumberFilter extends Filter {
     less?: number;
 
     lessEqual?: number;
-
-    range?: [number | undefined, number | undefined];
 }
 ```
 
